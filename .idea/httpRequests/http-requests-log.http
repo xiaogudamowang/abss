@@ -1,0 +1,336 @@
+GET http://localhost:8888/picTest
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-05-09T060301.500.json
+
+###
+
+GET http://localhost:8888/picTest
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-05-09T060117.404.json
+
+###
+
+GET http://localhost:8888/picTest
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-05-09T060004.404.json
+
+###
+
+GET http://localhost:8888/getBookListByShopCode?shopCode=13869168164163516
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-05-02T095506.200.json
+
+###
+
+GET http://localhost:8888/getBookListByShopCode?shopCode=13869168164163516
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-05-02T094945.200.json
+
+###
+
+POST http://localhost:8888/getBookListByShopCode?shopCode=13869168164163516
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-05-02T094938.405.json
+
+###
+
+POST http://localhost:8888/shopLogin?shopCode=13869168164163516&password=123
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-05-02T093200.200.json
+
+###
+
+POST http://localhost:8888/shopLogin?shopCode=13869168164163516&password=123
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-05-02T093038.500.json
+
+###
+
+POST http://localhost:8888/shopLogin?shopCode=13869168164163516&password=123
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-05-02T092822.500.json
+
+###
+
+POST http://localhost:8888/login?userName=xiaogudamowang&password=123456
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-05-01T085220.200.json
+
+###
+
+GET http://localhost:8888/getAddressList?userCode=123
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-05-01T053354.200.json
+
+###
+
+GET http://localhost:8888/getAddressList?carCode=4&userCode=123&userCode=123&userCode=123&userCode=123&userCode=123&userCode=123&userCode=123
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-05-01T053327.200.json
+
+###
+
+GET http://localhost:8888/getAddressList?carCode=4&userCode=123&userCode=123&userCode=123&userCode=123&userCode=123&userCode=123
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-05-01T053309.200.json
+
+###
+
+GET http://localhost:8888/getAddressList?carCode=4&userCode=123&userCode=123&userCode=123&userCode=123&userCode=123
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-05-01T053216.500.json
+
+###
+
+GET http://localhost:8888/getAddressList?carCode=4&userCode=123&userCode=123&userCode=123&userCode=123
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-05-01T052748.500.json
+
+###
+
+GET http://localhost:8888/getAddressList?carCode=4&userCode=123&userCode=123&userCode=123
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-05-01T052513.500.json
+
+###
+
+GET http://localhost:8888/getAddressList?carCode=4&userCode=123&userCode=123
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-05-01T052343.500.json
+
+###
+
+GET http://localhost:8888/getAddressList?carCode=4&userCode=123&userCode=123
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-05-01T052308.404.json
+
+###
+
+GET http://localhost:8888/getAddressList?carCode=4&userCode=123
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-05-01T052252.404.json
+
+###
+
+POST http://localhost:8888/delCarByCarCode?carCode=4
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-05-01T035949.200.json
+
+###
+
+POST http://localhost:8888/delCarByCarCode?carCode=4
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-05-01T035724.500.json
+
+###
+
+GET http://localhost:8888/getBookRankList?bookName=十万个为什么（普及版）&ISBN=9787558909498&src=http://img3m8.ddimg.cn/81/33/29220228-1_l_9.jpg&press=少年儿童出版社&author=韩启德&edition=1&sortCode=3&shopCode=13869168164163516&message=六十年的经典品牌 几代人的科学启蒙 韩启德总主编 新问题、新体系、新内容、新样式 115位两院院士担任编委 21位两院院士担任分册主编 768位国科学家和科普作家编纂&price=120.00&number=500&shopNumber=10&sortName="科学"&sortName="科学"
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-04-27T120802.200.json
+
+###
+
+GET http://localhost:8888/getBookRankList
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-04-27T120743.200.json
+
+###
+
+GET http://localhost:8888/getBookRankList
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-04-27T120312.200.json
+
+###
+
+POST http://localhost:8888/addBook?bookName=十万个为什么（普及版）&ISBN=9787558909498&src=http://img3m8.ddimg.cn/81/33/29220228-1_l_9.jpg&press=少年儿童出版社&author=韩启德&edition=1&sortCode=3&shopCode=13869168164163516&message=六十年的经典品牌 几代人的科学启蒙 韩启德总主编 新问题、新体系、新内容、新样式 115位两院院士担任编委 21位两院院士担任分册主编 768位国科学家和科普作家编纂&price=120.00&number=500&shopNumber=10
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-04-27T115931.200.json
+
+###
+
+POST http://localhost:8888/addBook?bookName=了不起的物理&ISBN=9787559646033&src=http://img3m7.ddimg.cn/35/15/29202857-1_l_28.jpg&press=北京联合出版有限公司&author=严伯钧&edition=1&sortCode=3&shopCode=13869168164163516&message=拒绝乏味，和物理交个朋友。一本从任何一页翻开都能读下去的科普书！随书附赠脑洞科普视频拉页，专属定制50幅Q萌漫画&price=46.80&number=500&shopNumber=6
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-04-27T115640.200.json
+
+###
+
+POST http://localhost:8888/addBook?bookName=家长好脾气，才有好教育&ISBN=9787512719415&src=http://img3m2.ddimg.cn/18/18/29223432-1_l_6.jpg&press=中国妇女出版社&author=C妈杨南南&edition=1&sortCode=2&bookCode=&shopCode=13869168164163516&message=父母的情绪决定孩子的未来！不吼不叫，不打不骂，让孩子看到你的爱，而不是你的愤怒。300000妈妈信赖，《好妈妈胜过好老师》作者尹建莉推崇备至的教育理念。&price=24.90&number=500&shopNumber=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-04-27T115341.200.json
+
+###
+
+POST http://localhost:8888/addBook?bookName=家长好脾气，才有好教育&ISBN=9787512719415&src=http://img3m2.ddimg.cn/18/18/29223432-1_l_6.jpg&press=中国妇女出版社&author=C妈杨南南&edition=1&sortCode=2&bookCode=&shopCode=13869168164163516&message=父母的情绪决定孩子的未来！不吼不叫，不打不骂，让孩子看到你的爱，而不是你的愤怒。300000妈妈信赖，《好妈妈胜过好老师》作者尹建莉推崇备至的教育理念。&price=24.90&number=500&shopNumber=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-04-27T115148.404.json
+
+###
+
+POST http://localhost:8888/addBook?bookName=家长好脾气，才有好教育&ISBN=9787512719415&src=http://img3m2.ddimg.cn/18/18/29223432-1_l_6.jpg&press=中国妇女出版社&author=C妈杨南南&edition=1&sortCode=2&bookCode=&shopCode=13869168164163516&message=父母的情绪决定孩子的未来！不吼不叫，不打不骂，让孩子看到你的爱，而不是你的愤怒。300000妈妈信赖，《好妈妈胜过好老师》作者尹建莉推崇备至的教育理念。&price=24.90&number=500&shopNumber=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-04-27T115045.404.json
+
+###
+
+POST http://localhost:8888/addBook?bookName=起床后的黄金1小时&ISBN=9787547739228&src=http://img3m9.ddimg.cn/64/33/29199619-1_l_21.jpg&press=北京日报出版社（原同心出版社）&author=[日] 池田千惠&edition=1&sortCode=2&bookCode=&shopCode=13869168164163516&message=要么躺在床上等待生活的暴击，要么早起创造人生的奇迹。利用头脑活跃、身体状态ZUI好的早起黄金1小时，做“ZUI重要的事”。只需1小时，成为高效能人士，你拥有的不只是时间，更是一种成功的习惯！&price=25.00&number=500&shopNumber=2
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-04-27T114809.200.json
+
+###
+
+POST http://localhost:8888/addBook?bookName=做一个清醒的现代人&ISBN=9787572601149&src=http://img3m6.ddimg.cn/65/28/29219816-1_l_6.jpg&press=湖南文艺出版社&author=刘擎&edition=1&sortCode=2&bookCode=&shopCode=13869168164163516&message=“知识界的独特存在”、《奇葩说》导师刘擎全新力作！呈现观念与现实的完美结合，澄清我们的处境与自我理解，重建对未来的想象！蔡康永、刘瑜、施展、李筠诚挚推荐！&price=34.00&number=500&shopNumber=3
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-04-27T114202.200.json
+
+###
+
+POST http://localhost:8888/addBook?bookName=文城&ISBN=9787530221099&src=http://img3m0.ddimg.cn/83/2/29199440-1_l_17.jpg&press=北京十月文艺出版社&author=余华&edition=1&sortCode=1&bookCode=16196846351894646841&shopCode=13869168164163516&message=余华时隔8年重磅新作！写《活着》的余华又回来了！人生就是自己的往事和他人的序章。关于一个人和他一生的寻找，以及一群人和一个汹涌的年代。精彩过瘾，不负等待！易烊千玺挚爱作家。限量赠送余华珍藏生肖漫画！&price=29.50&number=500
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-04-26T111117.200.json
+
+###
+
+POST http://localhost:8888/addBook?bookName=文城&ISBN=9787530221099&src=http://img3m0.ddimg.cn/83/2/29199440-1_l_17.jpg&press=北京十月文艺出版社&author=余华&edition=1&sortCode=1&bookCode=16196846351894646841&shopCode=13869168164163516&message=余华时隔8年重磅新作！写《活着》的余华又回来了！人生就是自己的往事和他人的序章。关于一个人和他一生的寻找，以及一群人和一个汹涌的年代。精彩过瘾，不负等待！易烊千玺挚爱作家。限量赠送余华珍藏生肖漫画！&price=29.50&number=500
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-04-26T110929.500.json
+
+###
+
+GET http://localhost:8888/getBookList
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-04-26T103044.200.json
+
+###
+
+GET http://localhost:8888/getBookList
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-04-26T102711.404.json
+
+###
+
+GET http://localhost:8888/getBookList
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-04-26T102553.404.json
+
+###
+
+GET http://localhost:8888/getBookList
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-04-26T102545.404.json
+
+###
+
+POST http://localhost:8888/addUser?userName=xiaogu&userPicture=&gender=1&phoneNumber=18815918355&password=123456&e_mail=1132072656@qq.com&token=
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-04-26T053543.200.json
+
+###
+
+POST http://localhost:8888/addUser?userName=xiaogu&userPicture=&gender=1&phoneNumber=18815918355&password=123456&e_mail=1132072656@qq.com&token=
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-04-26T053450.200.json
+
+###
+
+POST http://localhost:8888/addUser?userName=xiaogu&userPicture=&gender=1&phoneNumber=18815918355&password=123456&e_mail=1132072656@qq.com&token=
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-04-26T053337.200.json
+
+###
+
+POST http://localhost:8888/addUser?userName=xiaogu&userPicture=&gender=1&phoneNumber=18815918355&password=123456&e_mail=1132072656@qq.com&token=
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-04-26T053251.200.json
+
+###
+
+POST http://localhost:8888/addUser?userName=xiaogu&userPicture=&gender=1&phoneNumber=18815918355&password=123456&e_mail=1132072656@qq.com&token=
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-04-26T053022.200.json
+
+###
+
