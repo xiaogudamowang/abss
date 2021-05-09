@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.leiduoduo.abss.dao.BookShopDao">
+    <select id="shopLogin" parameterType="BookShop" resultType="BookShop">
+        select * from bookshop where shopCode = #{shopCode} and password = #{password};
+    </select>
+    
+    <update id="updBookShop" parameterType="BookShop">
+        update bookshop set
+        shopName = #{shopName},
+        shopPicture = #{shopPicture},
+        phoneNumber = #{phoneNumber},
+        e_mail = #{e_mail},
+        address = #{address},
+        QQ = #{QQ},
+        message = #{message},
+        updateAt = now()
+        where shopCode = #{shopCode};
+    </update>
+    
+    <update id="changeShopPassword" parameterType="BookShop">
+        update bookshop set password = #{password},updateAt = now() where shopCode = #{shopCode};
+    </update>
+    
+    <select id="getShopList" resultType="BookShop">
+        select * from bookshop where exist = 1;
+    </select>
+
+    <update id="delShopByShopCode" parameterType="String">
+        update bookshop set exist = 0,updateAt = now() where shopCode = #{shopCode};
+    </update>
+    <update id="updShopByShopCode" parameterType="BookShop">
+        update bookshop set
+        shopName = #{shopName},
+        shopPicture = #{shopPicture},
+        phoneNumber = #{phoneNumber},
+        password = #{password},
+        e_mail = #{e_mail},
+        address = #{address},
+        memberTime = #{memberTime},
+        QQ = #{QQ},
+        message = #{message},
+        updateAt = now()
+        where shopCode = #{shopCode};
+    </update>
+    
+    <select id="getShopByShopCode" parameterType="String" resultType="BookShop">
+        select * from bookshop where shopCode = #{shopCode};
+    </select>
+
+</mapper>

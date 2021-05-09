@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.leiduoduo.abss.dao.OrderDao">
+    <select id="getOrderList" parameterType="String" resultType="BookOrder">
+        select * from book_order where userCode = #{userCode};
+    </select>
+    
+    <select id="getOrderListByShopCode" parameterType="String" resultType="BookOrder">
+        select * from book_order where shopCode = #{shopCode} and exist = 1;
+    </select>
+    
+    <insert id="bookOrder" parameterType="BookOrder">
+        insert into book_order (orderCode,bookCode,bookName,number,price,userCode,total,shopCode,shopName,createAt,updateAt)
+        values (#{orderCode},#{bookCode},#{bookName},#{number},#{price},#{userCode},#{total},#{shopCode},#{shopName},now(),now());
+    </insert>
+</mapper>

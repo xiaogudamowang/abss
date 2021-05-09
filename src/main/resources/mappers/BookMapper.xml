@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.leiduoduo.abss.dao.BookDao">
+    <select id="getBookList" resultType="Book">
+        select * from book;
+    </select>
+    <insert id="addBook" parameterType="Book">
+        insert into
+        book (
+        bookCode,
+        bookName,
+        ISBN,
+        press,
+        src,
+        author,
+        edition,
+        sortCode,
+        sortName,
+        shopCode,
+        message,
+        price,
+        number,
+        shopNumber,
+        createAt,
+        updateAt
+        )
+        values (
+        #{bookCode},
+        #{bookName},
+        #{ISBN},
+        #{press},
+        #{src},
+        #{author},
+        #{edition},
+        #{sortCode},
+        #{sortName},
+        #{shopCode},
+        #{message},
+        #{price},
+        #{number},
+        #{shopNumber},
+        now(),
+        now()
+        );
+    </insert>
+    <select id="selectBookList" parameterType="String" resultType="Book">
+        select * from book where bookName like concat("%",#{condition},"%") or author like concat("%",#{condition},"%") or ISBN like concat("%",#{condition},"%") ;
+    </select>
+    <select id="getBookRankList" parameterType="String" resultType="Book">
+        select * from book
+        <if test="sortName != null and sortName != ''">
+            where sortCode in (SELECT sortCode FROM sort where sortName = #{sortName})
+        </if>
+        order by shopNumber DESC ;
+    </select>
+    <select id="getBookListBySort" parameterType="String" resultType="Book">
+        select * from book
+        <if test="sortName != null and sortName != ''">
+            where sortCode in (SELECT sortCode FROM sort where sortName = #{sortName})
+        </if>
+        order by createAt DESC;
+    </select>
+    <select id="getBookListByCode" parameterType="String" resultType="Book">
+        select * from book where bookCode = #{bookCode}
+    </select>
+    <select id="getBookListByShopCode" parameterType="String" resultType="Book">
+        select * from book where shopCode = #{shopCode} and exist = 1;
+    </select>
+    <update id="updateBook" parameterType="Book">
+        update book set
+        bookName = #{bookName},
+        ISBN = #{ISBN},
+        src = #{src},
+        press = #{press},
+        author = #{author},
+        edition = #{edition},
+        shopNumber = #{shopNumber},
+        sortCode = #{sortCode},
+        sortName = #{sortName},
+        shopCode = #{shopCode},
+        message = #{message},
+        price = #{price},
+        number = #{number},
+        createAt = now(),
+        updateAt = now()
+        where shopCode = #{shopCode} and bookCode = #{bookCode};
+    </update>
+    <update id="delBookByCode" parameterType="String">
+        update book set exist = 0 where bookCode = #{bookCode};
+    </update>
+</mapper>

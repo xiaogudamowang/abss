@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.leiduoduo.abss.dao.UserDao">
+    <select id="getUserList" resultType="User">
+        select * from user where exist = 1;
+    </select>
+    <insert id="addUser" parameterType="User">
+        insert into
+        user (
+        userCode,
+        userName,
+        userPicture,
+        gender,
+        phoneNumber,
+        password,
+        e_mail,
+        token,
+        createAt,
+        updateAt)
+        values
+        (
+        #{userCode},
+        #{userName},
+        #{userPicture},
+        #{gender},
+        #{phoneNumber},
+        #{password},
+        #{e_mail},
+        #{token},
+        now(),
+        now()
+        );
+    </insert>
+    <update id="updateUser" parameterType="User">
+        update user set userName = #{userName},e_mail = #{e_mail},updateAt = now() where userCode = #{userCode};
+    </update>
+    <update id="updateUser1" parameterType="User">
+        update user set
+        userName = #{userName},e_mail = #{e_mail},userPicture=#{userPicture},gender=#{gender},phoneNumber=#{phoneNumber},password=#{password},address=#{address},e_mail=#{e_mail},token=#{token},updateAt = now()
+        where userCode = #{userCode};
+    </update>
+    <select id="login" parameterType="User" resultType="User">
+        select * from user where userName = #{userName} and password = #{password};
+    </select>
+
+    <update id="setAddress" parameterType="User">
+        update user set address = #{address} where userCode = #{userCode};
+    </update>
+
+    <update id="delUserByUserCode" parameterType="String">
+        update user set exist = 0 where userCode = #{userCode};
+    </update>
+</mapper>
