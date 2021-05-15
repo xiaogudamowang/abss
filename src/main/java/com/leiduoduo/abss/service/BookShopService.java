@@ -17,4 +17,6 @@ public interface BookShopService {
     int delShopByShopCode(String shopCode);
 
     int updShopByShopCode(BookShop bookShop);
+
+    int shopRegister(BookShop bookShop);
 }

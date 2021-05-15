@@ -23,4 +23,8 @@ public interface BookShopDao {
     int updShopByShopCode(BookShop bookShop);
 
     BookShop getShopByShopCode(String shopCode);
+
+    BookShop selectBookShopByBookShopName(String shopName);
+
+    int addBookShop(BookShop bookShop);
 }

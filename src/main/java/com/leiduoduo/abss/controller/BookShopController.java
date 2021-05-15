@@ -4,10 +4,12 @@ import com.leiduoduo.abss.pojo.Book;
 import com.leiduoduo.abss.pojo.BookShop;
 import com.leiduoduo.abss.service.BookShopService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -69,4 +71,27 @@ public class BookShopController {
         result.put("data",bookShopService.updShopByShopCode(bookShop));
         return result;
     }
+
+    /**
+     * 添加书店
+     */
+    @PostMapping("/shopRegister")
+    public Map<String,Object> shopRegister(@Valid BookShop bookShop, BindingResult br){
+        Map<String,Object> result = new HashMap<>();
+        if (br.getErrorCount()>0){
+            result.put("code",500);
+            result.put("message",br.getFieldError().getDefaultMessage());
+            return result;
+        }else {
+            if (bookShopService.shopRegister(bookShop) == 1){
+                result.put("code",0);
+                result.put("message","注册成功");
+            }else{
+                result.put("code",500);
+                result.put("message","注册失败,店铺名已存在");
+            }
+            return result;
+        }
+    }
+
 }

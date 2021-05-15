@@ -47,5 +47,14 @@
     <select id="getShopByShopCode" parameterType="String" resultType="BookShop">
         select * from bookshop where shopCode = #{shopCode};
     </select>
+    
+    <select id="selectBookShopByBookShopName" parameterType="String" resultType="BookShop">
+        select * from bookshop where shopName = #{shopName};
+    </select>
+    
+    <insert id="addBookShop" parameterType="BookShop">
+        insert into bookshop (shopCode,shopName,phoneNumber,password,e_mail,address,QQ,message,createAt,updateAt)
+        values (#{shopCode},#{shopName},#{phoneNumber},#{password},#{e_mail},#{address},#{QQ},#{message},now(),now());
+    </insert>
 
 </mapper>

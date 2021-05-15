@@ -45,4 +45,16 @@ public class BookShopServiceImpl implements BookShopService {
     public int updShopByShopCode(BookShop bookShop) {
         return bookShopDao.updShopByShopCode(bookShop);
     }
+
+    @Override
+    public int shopRegister(BookShop bookShop) {
+        // 判断书店是否存在
+        if (null != bookShopDao.selectBookShopByBookShopName(bookShop.getShopName())){
+            return 0;
+        }else{
+            // 注册书店，不需要添加其他东西
+            bookShop.setShopCode(System.currentTimeMillis()+"");
+            return bookShopDao.addBookShop(bookShop);
+        }
+    }
 }
