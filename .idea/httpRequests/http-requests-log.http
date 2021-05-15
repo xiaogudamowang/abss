@@ -1,3 +1,155 @@
+POST http://localhost:8888/register?userName=leibaozha&gender=1&phoneNumber=10987654321&password=123456&address=福建省福州市闽侯县福建工程学院北区c5-307&e_mail=2389042461@qq.com
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-05-15T043224.200.json
+
+###
+
+POST http://localhost:8888/register?userName=leibaozha&gender=1&phoneNumber=10987654321&password=123456&address=福建省福州市闽侯县福建工程学院北区c5-307&e_mail=2389042461@
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-05-15T042844.200.json
+
+###
+
+POST http://localhost:8888/register?userName=leibaozha&gender=1&phoneNumber=10987654321&password=123456&address=福建省福州市闽侯县福建工程学院北区c5-307&e_mail=2389042461@
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-05-15T042834.200.json
+
+###
+
+POST http://localhost:8888/register?userName=leibaozha&gender=1&phoneNumber=10987654321&password=123456&address=福建省福州市闽侯县福建工程学院北区c5-307&e_mail=2389042461@
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-05-15T042633.200.json
+
+###
+
+POST http://localhost:8888/register?userName=leibaozha&gender=1&phoneNumber=10987654321&password=123456&address=福建省福州市闽侯县福建工程学院北区c5-307&e_mail=2389042461@qq.com
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-05-15T042618.200.json
+
+###
+
+POST http://localhost:8888/register?userName=leibaozha&gender=1&phoneNumber=10987654321&passWord=123456&address=福建省福州市闽侯县福建工程学院北区c5-307&e_mail=2389042461@qq.com
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-05-15T042411.200.json
+
+###
+
+POST http://localhost:8888/addBookToCar?userCode=123&bookCode=161949492191162&number=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-05-14T045901.200.json
+
+###
+
+POST http://localhost:8888/addBookToCar?userCode=123&bookCode=161949492191162&number=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-05-14T045702.500.json
+
+###
+
+POST http://localhost:8888/addBookToCar?userCode=123&bookCode=161949492191162&number=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-05-14T045508.500.json
+
+###
+
+POST http://localhost:8888/addBookToCar?userCode=123&bookCode=161944987668165&number=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-05-14T045435.200.json
+
+###
+
+POST http://localhost:8888/addBookToCar?userCode=123&bookCode=161944987668165&number=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-05-14T045227.200.json
+
+###
+
+POST http://localhost:8888/addBookToCar?userCode=123&bookCode=161944987668165&number=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-05-14T045052.200.json
+
+###
+
+POST http://localhost:8888/addBookToCar?userCode=123&bookCode=161944987668165&number=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-05-14T044311.200.json
+
+###
+
+POST http://localhost:8888/addBookToCar?userCode=123&bookCode=161944987668165&number=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-05-14T044243.200.json
+
+###
+
+POST http://localhost:8888/addBookToCar?userCode=123&bookCode=161944987668165&number=2
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-05-14T043901.200.json
+
+###
+
+POST http://localhost:8888/addBookToCar?userCode=123&bookCode=161944987668165&number=2
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-05-14T043803.200.json
+
+###
+
+POST http://localhost:8888/addBookToCar?userCode=123&bookCode=161944987668165&number=2
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-05-14T043734.200.json
+
+###
+
+POST http://localhost:8888/addBookToCar?userCode=123&bookCode=161944987668165&number=2
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-05-14T043531.200.json
+
+###
+
+POST http://localhost:8888/addBookToCar?userCode=123&bookCode=161944987668165&number=2
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-05-14T043514.200.json
+
+###
+
 GET http://localhost:8888/picTest
 Accept: */*
 Cache-Control: no-cache
@@ -243,94 +395,6 @@ Accept: */*
 Cache-Control: no-cache
 
 <> 2021-04-27T114202.200.json
-
-###
-
-POST http://localhost:8888/addBook?bookName=文城&ISBN=9787530221099&src=http://img3m0.ddimg.cn/83/2/29199440-1_l_17.jpg&press=北京十月文艺出版社&author=余华&edition=1&sortCode=1&bookCode=16196846351894646841&shopCode=13869168164163516&message=余华时隔8年重磅新作！写《活着》的余华又回来了！人生就是自己的往事和他人的序章。关于一个人和他一生的寻找，以及一群人和一个汹涌的年代。精彩过瘾，不负等待！易烊千玺挚爱作家。限量赠送余华珍藏生肖漫画！&price=29.50&number=500
-Accept: */*
-Cache-Control: no-cache
-
-<> 2021-04-26T111117.200.json
-
-###
-
-POST http://localhost:8888/addBook?bookName=文城&ISBN=9787530221099&src=http://img3m0.ddimg.cn/83/2/29199440-1_l_17.jpg&press=北京十月文艺出版社&author=余华&edition=1&sortCode=1&bookCode=16196846351894646841&shopCode=13869168164163516&message=余华时隔8年重磅新作！写《活着》的余华又回来了！人生就是自己的往事和他人的序章。关于一个人和他一生的寻找，以及一群人和一个汹涌的年代。精彩过瘾，不负等待！易烊千玺挚爱作家。限量赠送余华珍藏生肖漫画！&price=29.50&number=500
-Accept: */*
-Cache-Control: no-cache
-
-<> 2021-04-26T110929.500.json
-
-###
-
-GET http://localhost:8888/getBookList
-Accept: */*
-Cache-Control: no-cache
-
-<> 2021-04-26T103044.200.json
-
-###
-
-GET http://localhost:8888/getBookList
-Accept: */*
-Cache-Control: no-cache
-
-<> 2021-04-26T102711.404.json
-
-###
-
-GET http://localhost:8888/getBookList
-Accept: */*
-Cache-Control: no-cache
-
-<> 2021-04-26T102553.404.json
-
-###
-
-GET http://localhost:8888/getBookList
-Accept: */*
-Cache-Control: no-cache
-
-<> 2021-04-26T102545.404.json
-
-###
-
-POST http://localhost:8888/addUser?userName=xiaogu&userPicture=&gender=1&phoneNumber=18815918355&password=123456&e_mail=1132072656@qq.com&token=
-Accept: */*
-Cache-Control: no-cache
-
-<> 2021-04-26T053543.200.json
-
-###
-
-POST http://localhost:8888/addUser?userName=xiaogu&userPicture=&gender=1&phoneNumber=18815918355&password=123456&e_mail=1132072656@qq.com&token=
-Accept: */*
-Cache-Control: no-cache
-
-<> 2021-04-26T053450.200.json
-
-###
-
-POST http://localhost:8888/addUser?userName=xiaogu&userPicture=&gender=1&phoneNumber=18815918355&password=123456&e_mail=1132072656@qq.com&token=
-Accept: */*
-Cache-Control: no-cache
-
-<> 2021-04-26T053337.200.json
-
-###
-
-POST http://localhost:8888/addUser?userName=xiaogu&userPicture=&gender=1&phoneNumber=18815918355&password=123456&e_mail=1132072656@qq.com&token=
-Accept: */*
-Cache-Control: no-cache
-
-<> 2021-04-26T053251.200.json
-
-###
-
-POST http://localhost:8888/addUser?userName=xiaogu&userPicture=&gender=1&phoneNumber=18815918355&password=123456&e_mail=1132072656@qq.com&token=
-Accept: */*
-Cache-Control: no-cache
-
-<> 2021-04-26T053022.200.json
 
 ###
 

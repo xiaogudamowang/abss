@@ -2,6 +2,7 @@ package com.leiduoduo.abss.service;
 
 import com.leiduoduo.abss.pojo.User;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.BindingResult;
 
 import java.util.List;
 
@@ -16,4 +17,8 @@ public interface UserService {
 
     int setAddress(String addCode, String userCode);
     int delUserByUserCode(String userCode);
+
+    User updPicByUserCode(String userPicture, String userCode);
+
+    int register(User user);
 }

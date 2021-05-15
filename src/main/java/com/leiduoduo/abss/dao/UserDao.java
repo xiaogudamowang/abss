@@ -14,8 +14,12 @@ public interface UserDao {
     int updateUser(User user);
     int updateUser1(User user);
     User login(User user);
-
+    User selectUserByUserName(String userName);
     int setAddress(User user);
 
     int delUserByUserCode(String userCode);
+
+    int updPicByUserCode(User user);
+
+    User getUserByUserCode(String userCode);
 }

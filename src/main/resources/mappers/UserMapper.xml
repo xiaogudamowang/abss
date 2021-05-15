@@ -9,24 +9,22 @@
         user (
         userCode,
         userName,
-        userPicture,
         gender,
         phoneNumber,
         password,
+        address,
         e_mail,
-        token,
         createAt,
         updateAt)
         values
         (
         #{userCode},
         #{userName},
-        #{userPicture},
         #{gender},
         #{phoneNumber},
         #{password},
+        #{address},
         #{e_mail},
-        #{token},
         now(),
         now()
         );
@@ -39,6 +37,9 @@
         userName = #{userName},e_mail = #{e_mail},userPicture=#{userPicture},gender=#{gender},phoneNumber=#{phoneNumber},password=#{password},address=#{address},e_mail=#{e_mail},token=#{token},updateAt = now()
         where userCode = #{userCode};
     </update>
+    <select id="selectUserByUserName" parameterType="String" resultType="User">
+        select * from user where userName = #{userName};
+    </select>
     <select id="login" parameterType="User" resultType="User">
         select * from user where userName = #{userName} and password = #{password};
     </select>
@@ -50,4 +51,12 @@
     <update id="delUserByUserCode" parameterType="String">
         update user set exist = 0 where userCode = #{userCode};
     </update>
+
+    <update id="updPicByUserCode" parameterType="User">
+        update user set userPicture = #{userPicture},updateAt = now() where userCode = #{userCode};
+    </update>
+
+    <select id="getUserByUserCode" parameterType="String" resultType="User">
+        select * from user where userCode = #{userCode};
+    </select>
 </mapper>

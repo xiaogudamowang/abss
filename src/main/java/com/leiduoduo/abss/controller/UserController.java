@@ -3,11 +3,13 @@ package com.leiduoduo.abss.controller;
 import com.leiduoduo.abss.pojo.User;
 import com.leiduoduo.abss.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -72,5 +74,38 @@ public class UserController {
         Map<String,Object> result = new HashMap<>();
         result.put("data",userService.delUserByUserCode(userCode));
         return result;
+    }
+
+    /**
+     * 修改用户头像
+     */
+
+    @PostMapping("/updPicByUserCode")
+    public Map<String,Object> updPicByUserCode(String userPicture,String userCode){
+        Map<String,Object> result = new HashMap<>();
+        result.put("data",userService.updPicByUserCode(userPicture,userCode));
+        return result;
+    }
+
+    /**
+     * 注册
+     */
+    @PostMapping("/register")
+    public Map<String,Object> register(@Valid User user, BindingResult br){
+        Map<String,Object> result = new HashMap<>();
+        if (br.getErrorCount()>0){
+            result.put("code",500);
+            result.put("message",br.getFieldError().getDefaultMessage());
+            return result;
+        }else {
+            if (userService.register(user) == 1){
+                result.put("code",0);
+                result.put("message","注册成功");
+            }else{
+                result.put("code",500);
+                result.put("message","注册失败,用户名已存在");
+            }
+            return result;
+        }
     }
 }

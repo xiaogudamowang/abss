@@ -27,4 +27,11 @@ public class CarController {
         result.put("data",carService.delCarByCarCode(carCode));
         return result;
     }
+
+    @PostMapping("/addBookToCar")
+    public Map<String,Object> addBookToCar(String userCode,String bookCode,int number){
+        Map<String,Object> result = new HashMap<>();
+        result.put("data",carService.addBookToCar(userCode,bookCode,number));
+        return result;
+    }
 }

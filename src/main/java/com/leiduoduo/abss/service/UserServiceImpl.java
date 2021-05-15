@@ -1,9 +1,14 @@
 package com.leiduoduo.abss.service;
 
+import com.leiduoduo.abss.dao.AddressDao;
 import com.leiduoduo.abss.dao.UserDao;
+import com.leiduoduo.abss.pojo.Address;
 import com.leiduoduo.abss.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 
 import java.util.List;
 import java.util.Random;
@@ -11,6 +16,8 @@ import java.util.Random;
 public class UserServiceImpl implements UserService {
     @Autowired
     UserDao userDao;
+    @Autowired
+    AddressDao addressDao;
 
     public List<User> getUserList(){
         return userDao.getUserList();
@@ -61,5 +68,46 @@ public class UserServiceImpl implements UserService {
     @Override
     public int delUserByUserCode(String userCode) {
         return userDao.delUserByUserCode(userCode);
+    }
+
+    /**
+     * 修改用户头像
+     */
+    @Override
+    @Transactional
+    public User updPicByUserCode(String userPicture, String userCode) {
+        User user = new User();
+        user.setUserPicture(userPicture);
+        user.setUserCode(userCode);
+        userDao.updPicByUserCode(user);
+        return userDao.getUserByUserCode(userCode);
+    }
+
+    /**
+     * 注册
+     * @param user
+     * @return
+     */
+    @Override
+    @Transactional
+    public int register(User user) {
+        // 判断用户是否已经存在
+        if (null != userDao.selectUserByUserName(user.getUserName())){
+            return 0;
+        }else{
+            // 不存在则注册用户
+            user.setUserCode(System.currentTimeMillis()+"");
+            // 添加收货地址
+            Address address = new Address();
+            address.setAddCode(System.currentTimeMillis()+"");
+            address.setMessage(user.getAddress());
+            address.setTel(user.getPhoneNumber());
+            address.setName(user.getUserName());
+            address.setUserCode(user.getUserCode());
+            addressDao.addAddress(address);
+            // 添加用户
+            user.setAddress(address.getAddCode());
+            return userDao.addUser(user);
+        }
     }
 }

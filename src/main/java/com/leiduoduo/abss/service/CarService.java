@@ -7,4 +7,6 @@ import java.util.List;
 public interface CarService {
     List<Car> getCarList(String userCode);
     int delCarByCarCode(String carCode);
+
+    int addBookToCar(String userCode, String bookCode, int number);
 }
