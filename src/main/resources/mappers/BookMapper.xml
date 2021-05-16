@@ -66,6 +66,12 @@
     <select id="getBookListByShopCode" parameterType="String" resultType="Book">
         select * from book where shopCode = #{shopCode} and exist = 1;
     </select>
+    <select id="getBookTopByShopCode" parameterType="String" resultType="Book">
+      select * from book where shopCode = #{shopCode} and exist = 1 order by shopNumber desc;
+    </select>
+    <select id="getSortTopByShopCode" parameterType="String" resultType="Book">
+      SELECT count(id) as id,sortName from book where shopCode = #{shopCode} GROUP BY sortName order by id desc;
+    </select>
     <update id="updateBook" parameterType="Book">
         update book set
         bookName = #{bookName},

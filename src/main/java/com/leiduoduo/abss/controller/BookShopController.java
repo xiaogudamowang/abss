@@ -83,13 +83,9 @@ public class BookShopController {
             result.put("message",br.getFieldError().getDefaultMessage());
             return result;
         }else {
-            if (bookShopService.shopRegister(bookShop) == 1){
-                result.put("code",0);
-                result.put("message","注册成功");
-            }else{
-                result.put("code",500);
-                result.put("message","注册失败,店铺名已存在");
-            }
+            Map<String,Object> rs = bookShopService.shopRegister(bookShop);
+            result.put("code",rs.get("code"));
+            result.put("message",rs.get("message"));
             return result;
         }
     }

@@ -14,4 +14,6 @@ public interface AddressDao {
     int addAddress(Address address);
 
     int delAddress(String addCode);
+
+    boolean updadd(Address address);
 }

@@ -35,4 +35,13 @@ public class AddressController {
         result.put("data",addressService.delAddress(addCode));
         return result;
     }
+    @PostMapping("/updadd")
+    public Map<String,Object> updadd(Address address){
+        Map<String,Object> result = new HashMap<>();
+        Map<String,Object> rs = new HashMap<>();
+        rs = addressService.updadd(address);
+        result.put("code",rs.get("code"));
+        result.put("message",rs.get("message"));
+        return result;
+    }
 }

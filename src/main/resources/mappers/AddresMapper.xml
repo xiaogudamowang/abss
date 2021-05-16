@@ -21,4 +21,7 @@
     <delete id="delAddress" parameterType="String">
         delete from address where addCode = #{addCode}
     </delete>
+    <update id="updadd" parameterType="Address">
+        update address set message = #{message},name = #{name},tel = #{tel},updateAt = now() where addCode = #{addCode};
+    </update>
 </mapper>

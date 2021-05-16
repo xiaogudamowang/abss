@@ -1,3 +1,27 @@
+GET http://localhost:8888/getBookTopByShopCode?shopCode=13869168164163516
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-05-16T071322.200.json
+
+###
+
+GET http://localhost:8888/getBookTopByShopCode?shopCode=13869168164163516
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-05-16T070738.200.json
+
+###
+
+GET http://localhost:8888/getBookTopByShopCode
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-05-16T070657.200.json
+
+###
+
 POST http://localhost:8888/shopRegister?shopName=雷多多书店&QQ=1132072656&phoneNumber=10987654321&password=123456&address=福建省福州市闽侯县福建工程学院北区c5-307&e_mail=2389042461@qq.com&message=很棒的书店
 Accept: */*
 Cache-Control: no-cache
@@ -371,30 +395,6 @@ Accept: */*
 Cache-Control: no-cache
 
 <> 2021-05-01T035724.500.json
-
-###
-
-GET http://localhost:8888/getBookRankList?bookName=十万个为什么（普及版）&ISBN=9787558909498&src=http://img3m8.ddimg.cn/81/33/29220228-1_l_9.jpg&press=少年儿童出版社&author=韩启德&edition=1&sortCode=3&shopCode=13869168164163516&message=六十年的经典品牌 几代人的科学启蒙 韩启德总主编 新问题、新体系、新内容、新样式 115位两院院士担任编委 21位两院院士担任分册主编 768位国科学家和科普作家编纂&price=120.00&number=500&shopNumber=10&sortName="科学"&sortName="科学"
-Accept: */*
-Cache-Control: no-cache
-
-<> 2021-04-27T120802.200.json
-
-###
-
-GET http://localhost:8888/getBookRankList
-Accept: */*
-Cache-Control: no-cache
-
-<> 2021-04-27T120743.200.json
-
-###
-
-GET http://localhost:8888/getBookRankList
-Accept: */*
-Cache-Control: no-cache
-
-<> 2021-04-27T120312.200.json
 
 ###
 

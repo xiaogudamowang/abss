@@ -6,7 +6,9 @@ import com.leiduoduo.abss.pojo.BookShop;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class BookShopServiceImpl implements BookShopService {
@@ -47,14 +49,25 @@ public class BookShopServiceImpl implements BookShopService {
     }
 
     @Override
-    public int shopRegister(BookShop bookShop) {
+    public Map<String,Object> shopRegister(BookShop bookShop) {
+        Map<String,Object> result = new HashMap<>();
         // 判断书店是否存在
         if (null != bookShopDao.selectBookShopByBookShopName(bookShop.getShopName())){
-            return 0;
+            result.put("code",0);
+            result.put("message","该店铺名已存在！");
+            return result;
         }else{
             // 注册书店，不需要添加其他东西
             bookShop.setShopCode(System.currentTimeMillis()+"");
-            return bookShopDao.addBookShop(bookShop);
+            if(bookShopDao.addBookShop(bookShop) == 1){
+                result.put("code",1);
+                result.put("message","注册成功，请记好账号用于后续登录！ "+bookShop.getShopCode());
+                return result;
+            }else{
+                result.put("code",0);
+                result.put("message","注册失败");
+                return result;
+            }
         }
     }
 }

@@ -4,6 +4,7 @@ import com.leiduoduo.abss.pojo.Book;
 import com.leiduoduo.abss.pojo.BookShop;
 
 import java.util.List;
+import java.util.Map;
 
 public interface BookShopService {
     BookShop shopLogin(BookShop bookShop);
@@ -18,5 +19,5 @@ public interface BookShopService {
 
     int updShopByShopCode(BookShop bookShop);
 
-    int shopRegister(BookShop bookShop);
+    Map<String,Object> shopRegister(BookShop bookShop);
 }

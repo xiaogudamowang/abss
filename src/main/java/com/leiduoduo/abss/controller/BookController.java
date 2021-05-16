@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -94,6 +96,39 @@ public class BookController {
     public Map<String,Object> getBookListByShopCode(String shopCode){
         Map<String,Object> result = new HashMap<>();
         result.put("data",bookService.getBookListByShopCode(shopCode));
+        return result;
+    }
+    /**
+     * 通过商店编号查找书籍Top
+     */
+    @GetMapping("/getBookTopByShopCode")
+    public Map<String,Object> getBookTopByShopCode(String shopCode){
+        Map<String,Object> result = new HashMap<>();
+        List<Map<String,Object>> bookList = new LinkedList<>();
+        for (Book book: bookService.getBookTopByShopCode(shopCode)) {
+            Map<String,Object> item = new HashMap<>();
+            item.put("value",book.getShopNumber());
+            item.put("name",book.getBookName());
+            bookList.add(item);
+        }
+        result.put("data",bookList);
+        return result;
+    }
+
+    /**
+     * 通过商店编号查找类别Top
+     */
+    @GetMapping("/getSortTopByShopCode")
+    public Map<String,Object> getSortTopByShopCode(String shopCode){
+        Map<String,Object> result = new HashMap<>();
+        List<Map<String,Object>> bookList = new LinkedList<>();
+        for (Book book: bookService.getSortTopByShopCode(shopCode)) {
+            Map<String,Object> item = new HashMap<>();
+            item.put("value",book.getId());
+            item.put("name",book.getSortName());
+            bookList.add(item);
+        }
+        result.put("data",bookList);
         return result;
     }
 

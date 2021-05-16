@@ -41,4 +41,8 @@ public interface BookDao {
     根据书籍编码 删除 书籍
      */
     int delBookByCode(String bookCode);
+
+    List<Book> getBookTopByShopCode(String shopCode);
+
+    List<Book> getSortTopByShopCode(String shopCode);
 }

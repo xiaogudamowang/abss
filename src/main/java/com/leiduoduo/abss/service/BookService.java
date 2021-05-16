@@ -31,4 +31,8 @@ public interface BookService {
     根据书籍编码 删除 书籍
      */
     int delBookByCode(String bookCode, String shopCode);
+
+    List<Book> getBookTopByShopCode(String shopCode);
+
+    List<Book> getSortTopByShopCode(String shopCode);
 }

@@ -64,4 +64,14 @@ public class BookServiceImpl implements BookService {
     public int delBookByCode(String bookCode, String shopCode) {
         return bookDao.delBookByCode(bookCode);
     }
+
+    @Override
+    public List<Book> getBookTopByShopCode(String shopCode) {
+        return bookDao.getBookTopByShopCode(shopCode);
+    }
+
+    @Override
+    public List<Book> getSortTopByShopCode(String shopCode) {
+        return bookDao.getSortTopByShopCode(shopCode);
+    }
 }
