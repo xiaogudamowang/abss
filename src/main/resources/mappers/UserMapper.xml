@@ -4,6 +4,9 @@
     <select id="getUserList" resultType="User">
         select * from user where exist = 1;
     </select>
+    <select id="getUserByCode" resultType="User" parameterType="String">
+        select * from user where exist = 1 and userCode = #{userCode};
+    </select>
     <insert id="addUser" parameterType="User">
         insert into
         user (

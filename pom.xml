@@ -16,6 +16,13 @@
     </properties>
 
     <dependencies>
+        <!--token-->
+        <dependency>
+            <groupId>com.auth0</groupId>
+            <artifactId>java-jwt</artifactId>
+            <version>3.12.0</version>
+        </dependency>
+
         <!--解析网页  tika爬电影音乐-->
         <dependency>
             <groupId>org.jsoup</groupId>

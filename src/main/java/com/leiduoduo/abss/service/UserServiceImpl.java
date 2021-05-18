@@ -48,6 +48,7 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public User login(User user) {
+
         return userDao.login(user);
     }
 
@@ -109,5 +110,13 @@ public class UserServiceImpl implements UserService {
             user.setAddress(address.getAddCode());
             return userDao.addUser(user);
         }
+    }
+
+    /**
+     * 通过userCode得到User（用在Token）
+     */
+    @Override
+    public User getUserByCode(String userCode) {
+        return userDao.getUserByCode(userCode);
     }
 }

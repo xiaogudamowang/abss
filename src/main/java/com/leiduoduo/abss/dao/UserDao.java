@@ -22,4 +22,6 @@ public interface UserDao {
     int updPicByUserCode(User user);
 
     User getUserByUserCode(String userCode);
+
+    User getUserByCode(String userCode);
 }

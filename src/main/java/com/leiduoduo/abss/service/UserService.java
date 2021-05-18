@@ -21,4 +21,6 @@ public interface UserService {
     User updPicByUserCode(String userPicture, String userCode);
 
     int register(User user);
+
+    User getUserByCode(String userCode);
 }

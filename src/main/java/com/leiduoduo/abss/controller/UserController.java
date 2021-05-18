@@ -1,5 +1,7 @@
 package com.leiduoduo.abss.controller;
 
+import com.leiduoduo.abss.annotation.UserLoginToken;
+import com.leiduoduo.abss.pojo.Token;
 import com.leiduoduo.abss.pojo.User;
 import com.leiduoduo.abss.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,8 @@ import java.util.Map;
 public class UserController {
     @Autowired
     UserServiceImpl userService;
+    @Autowired
+    Token token;
 
     @GetMapping("/getUserList")
     public Map<String,Object> getUserList(){
@@ -52,7 +56,18 @@ public class UserController {
     @PostMapping("/login")
     public Map<String,Object> login(User user){
         Map<String,Object> result = new HashMap<>();
-        result.put("data",userService.login(user));
+        User resultUser = userService.login(user);
+        if (null != resultUser){
+            result.put("data",resultUser);
+            result.put("token",token.getToken(resultUser.getUserCode()));
+            result.put("code",0);
+            result.put("message","登录成功");
+        }else{
+            result.put("data",null);
+            result.put("token",null);
+            result.put("code",401);
+            result.put("message","用户不存在");
+        }
         return result;
     }
 
@@ -79,7 +94,7 @@ public class UserController {
     /**
      * 修改用户头像
      */
-
+    @UserLoginToken
     @PostMapping("/updPicByUserCode")
     public Map<String,Object> updPicByUserCode(String userPicture,String userCode){
         Map<String,Object> result = new HashMap<>();
