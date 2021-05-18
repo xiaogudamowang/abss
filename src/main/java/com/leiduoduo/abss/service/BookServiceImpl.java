@@ -23,7 +23,6 @@ public class BookServiceImpl implements BookService {
     @Override
     public int addBook(Book book) {
         int random = new Random().nextInt(100);
-        System.out.println("random---------------------->"+random);
         book.setBookCode(System.currentTimeMillis()+""+random);
         book.setSortName(sortDao.getNameByCode(book.getSortCode()));
         return bookDao.addBook(book);

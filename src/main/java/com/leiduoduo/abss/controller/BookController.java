@@ -3,16 +3,20 @@ package com.leiduoduo.abss.controller;
 import com.leiduoduo.abss.pojo.Book;
 import com.leiduoduo.abss.pojo.User;
 import com.leiduoduo.abss.service.BookService;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.*;
 
 @RestController
 @CrossOrigin
@@ -155,5 +159,66 @@ public class BookController {
         Map<String,Object> result = new HashMap<>();
         result.put("data",bookService.delBookByCode(bookCode,shopCode));
         return result;
+    }
+
+    /**
+     * 爬虫
+     */
+    @GetMapping("/pachon")
+    public void pachon() throws IOException {
+        String url="http://search.dangdang.com/?key=java";
+        // 解析网页
+        Document document = Jsoup.parse(new URL(url), 3000);
+        Element element = document.getElementById("component_59");
+        // System.out.println(element.html());
+        // 获取所有的li元素
+        Elements li = element.getElementsByTag("li");
+        // 获取元素中的内容
+        for (Element element1 : li) {
+            Book book = new Book();
+            String eleurl = element1.getElementsByTag("a").eq(0).attr("href");
+            String img = element1.getElementsByTag("img").eq(0).attr("data-original");
+            Double price = Double.parseDouble(element1.getElementsByClass("search_now_price").eq(0).text().substring(1));
+            String title = element1.getElementsByClass("name").eq(0).text();
+            // 出版社
+            String press = element1.getElementsByClass("search_book_author").get(0).getElementsByTag("span").eq(2).text().substring(1);
+            // 作者
+            String author = element1.getElementsByClass("search_book_author").get(0).getElementsByTag("span").eq(0).text();
+            // 版次
+            String edition = "1";
+            int shopNumber = new Random().nextInt(10);
+            String sortCode = "3";
+            String shopCode = "13869168164163516";
+            String sortName = "科学";
+            // 书籍描述
+            String message = element1.getElementsByClass("detail").text();
+            int number = 500;
+
+//            System.out.println("===================================");
+//            System.out.println(img);
+//            System.out.println(press);
+//            System.out.println(author);
+//            System.out.println(price);
+//            System.out.println(title);
+//            System.out.println(message);
+            Document eledocument = Jsoup.parse(new URL(eleurl), 3000);
+            String isbn = eledocument.getElementById("detail_describe").getElementsByTag("li").eq(4).text().substring(11);
+//            System.out.println(isbn);
+            book.setBookCode(System.currentTimeMillis()+"");
+            book.setBookName(title);
+            book.setISBN(isbn);
+            book.setSrc(img);
+            book.setPress(press);
+            book.setAuthor(author);
+            book.setEdition(edition);
+            book.setShopNumber(shopNumber);
+            book.setSortCode(sortCode);
+            book.setSortName(sortName);
+            book.setShopCode(shopCode);
+            book.setMessage(message);
+            book.setPrice(price);
+            book.setNumber(number);
+            bookService.addBook(book);
+        }
     }
 }
