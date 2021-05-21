@@ -44,4 +44,13 @@ public class AddressController {
         result.put("message",rs.get("message"));
         return result;
     }
+    @GetMapping("/getMoRenAddressByUserCode")
+    public Map<String,Object> getMoRenAddressByUserCode(String userCode){
+        Map<String,Object> result = new HashMap<>();
+        result.put("code",0);
+        result.put("data",addressService.getMoRenAddressByUserCode(userCode));
+        return result;
+    }
+
+
 }

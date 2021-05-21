@@ -7,6 +7,7 @@ import com.leiduoduo.abss.service.OrderServcice;
 import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -33,6 +34,19 @@ public class OrderController {
         result.put("data",orderServcice.getOrderListByShopCode(shopCode));
         return result;
     }
+
+    /**
+     * 添加订单
+     * @param request
+     * @return
+     */
+    @PostMapping("/insertOrder")
+    public Map<String,Object> insertOrder(String bookCode,String bookName,String userCode,int number){
+        Map<String,Object> result = new HashMap<>();
+        result.put("data",orderServcice.insertOrder(bookCode,bookName,userCode,number));
+        return result;
+    }
+
     @RequestMapping("/addOrder")
     public String addOrder(HttpServletRequest request){
         boolean result = false;

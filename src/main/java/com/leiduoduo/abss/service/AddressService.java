@@ -13,4 +13,6 @@ public interface AddressService {
     int delAddress(String addCode);
 
     Map<String, Object> updadd(Address address);
+
+    Address getMoRenAddressByUserCode(String userCode);
 }

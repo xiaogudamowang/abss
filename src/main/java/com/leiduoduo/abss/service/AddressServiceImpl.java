@@ -48,4 +48,12 @@ public class AddressServiceImpl implements AddressService {
         }
         return result;
     }
+
+    /**
+     * 获取默认的地址
+     */
+    @Override
+    public Address getMoRenAddressByUserCode(String userCode) {
+        return addressDao.getMoRenAddressByUserCode(userCode);
+    }
 }

@@ -2,10 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.leiduoduo.abss.dao.CarDao">
     <select id="getCarList" parameterType="String" resultType="Car">
-         select a.id,a.carCode,a.bookCode,b.bookName,b.price,a.userCode,a.number,a.shopCode,a.shopName,a.createAt,a.updateAt,b.exist from
+         select a.id,a.carCode,a.bookCode,b.bookName,b.src,b.price,a.userCode,a.number,a.shopCode,a.shopName,a.createAt,a.updateAt,b.exist from
         (select id,carCode,bookCode,userCode,number,shopCode,shopName,createAt,updateAt from car where userCode = #{userCode} and exist = 1) a
         LEFT JOIN
-        (select bookCode,bookName,price,exist from book) b
+        (select bookCode,bookName,src,price,exist from book) b
         on a.bookCode = b.bookCode
     </select>
     <delete id="delCarByCarCode" parameterType="String">
@@ -24,10 +24,16 @@
         select * from car where bookCode = #{bookCode} and exist = 1;
     </select>
     <insert id="addBookToCar" parameterType="Car">
-      insert into car (carCode,bookCode,bookName,userCode,number,price,total,shopCode,shopName,createAt,updateAt)
-      values (#{carCode},#{bookCode},#{bookName},#{userCode},#{number},#{price},#{total},#{shopCode},#{shopName},now(),now());
+      insert into car (carCode,bookCode,bookName,src,userCode,number,price,total,shopCode,shopName,createAt,updateAt)
+      values (#{carCode},#{bookCode},#{bookName},#{src},#{userCode},#{number},#{price},#{total},#{shopCode},#{shopName},now(),now());
     </insert>
     <update id="addCarNumber" parameterType="Car">
         update car set number = (number + #{number}) where carCode = #{carCode};
     </update>
+    <update id="upCode" parameterType="Map">
+        update car set bigOrderCode = #{bigOrderCode} where bookCode=#{bookCode} and userCode=#{userCode};
+    </update>
+    <select id="selectCarListByBigOrderCode" parameterType="String" resultType="Car">
+        select * from car where bigOrderCode=#{bigOrderCode};
+    </select>
 </mapper>

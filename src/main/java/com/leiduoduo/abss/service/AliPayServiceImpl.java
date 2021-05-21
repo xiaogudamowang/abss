@@ -11,10 +11,14 @@ import com.alipay.api.response.AlipayTradePrecreateResponse;
 import com.leiduoduo.abss.config.AlipayConfig;
 import com.leiduoduo.abss.dao.BookDao;
 import com.leiduoduo.abss.dao.BookShopDao;
+import com.leiduoduo.abss.dao.CarDao;
 import com.leiduoduo.abss.pojo.Book;
+import com.leiduoduo.abss.pojo.BookOrder;
+import com.leiduoduo.abss.pojo.Car;
 import com.leiduoduo.abss.qrcode.QRCodeUtil;
 import com.leiduoduo.abss.qrcode.QrCodeResponse;
 import com.leiduoduo.abss.qrcode.QrResponse;
+import com.leiduoduo.abss.util.Arith;
 import com.leiduoduo.abss.util.GenerateNum;
 import com.leiduoduo.abss.vo.PayVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +31,7 @@ import javax.imageio.stream.ImageOutputStream;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.util.*;
 
 @Service
 public class AliPayServiceImpl implements AliPayService {
@@ -36,6 +41,8 @@ public class AliPayServiceImpl implements AliPayService {
     private BookDao bookDao;
     @Autowired
     private BookShopDao bookShopDao;
+    @Autowired
+    CarDao carDao;
 
     @Override
     public byte[] alipay(String bookCode,String userCode,int number) {
@@ -95,6 +102,73 @@ public class AliPayServiceImpl implements AliPayService {
             ex.printStackTrace();
             return null;
         }
+    }
+
+    /**
+     * 通过code找到car
+     * @param code
+     * @return
+     */
+    @Override
+    public byte[] payList(String code) {
+        try {
+            List<Car> carList = carDao.selectCarListByBigOrderCode(code);
+            double total = 0.0;
+            for (Car car:carList
+                 ) {
+                total=Arith.add(total,car.getTotal());
+            }
+
+
+            // 支付宝携带的参数在回调中可以通过request获取
+            JSONObject json = new JSONObject();
+            json.put("code", code);
+            String params = json.toString();
+
+            //--------------------------
+            System.out.println("total============================="+total);
+
+
+            // 支付信息的参数
+            // 6：设置支付相关的信息
+            AlipayTradePrecreateModel model = new AlipayTradePrecreateModel();
+            model.setOutTradeNo(System.currentTimeMillis()+""); // 自定义订单号
+            model.setTotalAmount(total+"");// 支付金额
+            model.setSubject("复合订单");// 支付的产品名称
+            model.setBody(params);// 支付的请求体参数
+            model.setTimeoutExpress("30m");// 支付的超时时间
+            model.setStoreId(System.currentTimeMillis()+"");// 支付的库存id
+            QrCodeResponse qrCodeResponse = qrcodePay(model);
+
+
+
+            // 二维码生成
+            ByteArrayOutputStream output = new ByteArrayOutputStream();
+            String logopath = ResourceUtils.getFile("classpath:favicon.png").getAbsolutePath();
+            BufferedImage buffImg = QRCodeUtil.encode(qrCodeResponse.getQr_code(), logopath, false);//获取二维码
+            ImageOutputStream imageOut = ImageIO.createImageOutputStream(output);
+            ImageIO.write(buffImg, "JPEG", imageOut);
+            imageOut.close();
+            ByteArrayInputStream input = new ByteArrayInputStream(output.toByteArray());
+            return FileCopyUtils.copyToByteArray(input);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
+    public String payOrder(Car[] carlist) {
+        String bigOrderCode = System.currentTimeMillis()+"";
+        for (Car car:carlist
+             ) {
+            Map<String,Object> map = new HashMap<>();
+            map.put("bigOrderCode",bigOrderCode);
+            map.put("bookCode",car.getBookCode());
+            map.put("userCode",car.getUserCode());
+            carDao.upCode(map);
+        }
+        return bigOrderCode;
     }
 
     /**

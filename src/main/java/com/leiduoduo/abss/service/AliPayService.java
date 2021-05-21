@@ -1,6 +1,7 @@
 package com.leiduoduo.abss.service;
 
 
+import com.leiduoduo.abss.pojo.Car;
 import com.leiduoduo.abss.vo.PayVo;
 
 /**
@@ -19,4 +20,8 @@ public interface AliPayService {
      * @Param [payVo]
      **/
     byte[] alipay(String bookCode,String userCode,int number);
+
+    byte[] payList(String code);
+
+    String payOrder(Car[] carlist);
 }

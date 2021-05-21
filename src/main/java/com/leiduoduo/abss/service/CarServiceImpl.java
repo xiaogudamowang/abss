@@ -5,6 +5,7 @@ import com.leiduoduo.abss.dao.BookShopDao;
 import com.leiduoduo.abss.dao.CarDao;
 import com.leiduoduo.abss.pojo.Book;
 import com.leiduoduo.abss.pojo.Car;
+import com.leiduoduo.abss.util.Arith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -54,13 +55,14 @@ public class CarServiceImpl implements CarService{
             Car car = new Car();
             car.setBookCode(bookCode);
             car.setBookName(book.getBookName());
+            car.setSrc(book.getSrc());
             car.setPrice(book.getPrice());
             car.setNumber(number);
             car.setShopCode(book.getShopCode());
             car.setShopName(bookShopDao.getShopByShopCode(book.getShopCode()).getShopName());
             car.setCarCode(System.currentTimeMillis()+"");
             car.setUserCode(userCode);
-            car.setTotal(car.getPrice()*car.getNumber());
+            car.setTotal(Arith.mul(car.getPrice(),car.getNumber()));
             return carDao.addBookToCar(car);
         }else{
             car2.setNumber(number);

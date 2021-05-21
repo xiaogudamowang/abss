@@ -16,6 +16,7 @@ public class Car {
     private String carCode;
     private String bookCode;
     private String bookName;
+    private String src;
     private String userCode;
     private int number;
     private double price;
@@ -26,4 +27,28 @@ public class Car {
     private String updateAt;
     private int exist;
 
+    public Car(String bookCode, String userCode, int number) {
+        this.bookCode = bookCode;
+        this.userCode = userCode;
+        this.number = number;
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "id=" + id +
+                ", carCode='" + carCode + '\'' +
+                ", bookCode='" + bookCode + '\'' +
+                ", bookName='" + bookName + '\'' +
+                ", userCode='" + userCode + '\'' +
+                ", number=" + number +
+                ", price=" + price +
+                ", total=" + total +
+                ", shopCode='" + shopCode + '\'' +
+                ", shopName='" + shopName + '\'' +
+                ", createAt='" + createAt + '\'' +
+                ", updateAt='" + updateAt + '\'' +
+                ", exist=" + exist +
+                '}';
+    }
 }

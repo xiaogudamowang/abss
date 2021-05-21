@@ -24,4 +24,7 @@
     <update id="updadd" parameterType="Address">
         update address set message = #{message},name = #{name},tel = #{tel},updateAt = now() where addCode = #{addCode};
     </update>
+    <select id="getMoRenAddressByUserCode" parameterType="String" resultType="Address">
+        select * from address where addCode in (select address from user where userCode = #{userCode});
+    </select>
 </mapper>

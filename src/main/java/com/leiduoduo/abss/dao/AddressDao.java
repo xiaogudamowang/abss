@@ -16,4 +16,6 @@ public interface AddressDao {
     int delAddress(String addCode);
 
     boolean updadd(Address address);
+
+    Address getMoRenAddressByUserCode(String userCode);
 }

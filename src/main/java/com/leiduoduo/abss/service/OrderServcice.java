@@ -11,4 +11,6 @@ public interface OrderServcice {
     List<BookOrder> getOrderListByShopCode(String shopCode);
 
     void addOrder(BookOrder bookOrder);
+
+    int insertOrder(String bookCode, String bookName, String userCode, int number);
 }

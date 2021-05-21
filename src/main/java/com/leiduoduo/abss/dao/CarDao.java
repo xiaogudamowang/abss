@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 @Repository
@@ -17,4 +18,6 @@ public interface CarDao {
     int addBookToCar(Car car);
     Car getBookByBookCode(String bookCode);
     int addCarNumber(Car car);
+    void upCode(Map<String,Object> map);
+    List<Car> selectCarListByBigOrderCode(String bigOrderCode);
 }

@@ -13,5 +13,6 @@ public interface OrderDao {
 
     List<BookOrder> getOrderListByShopCode(String shopCode);
 
-    void addOrder(BookOrder bookOrder);
+    int addOrder(BookOrder bookOrder);
+
 }

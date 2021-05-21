@@ -9,8 +9,9 @@
         select * from book_order where shopCode = #{shopCode} and exist = 1;
     </select>
     
-    <insert id="bookOrder" parameterType="BookOrder">
+    <insert id="addOrder" parameterType="BookOrder">
         insert into book_order (orderCode,bookCode,bookName,number,price,userCode,total,shopCode,shopName,createAt,updateAt)
         values (#{orderCode},#{bookCode},#{bookName},#{number},#{price},#{userCode},#{total},#{shopCode},#{shopName},now(),now());
     </insert>
+
 </mapper>

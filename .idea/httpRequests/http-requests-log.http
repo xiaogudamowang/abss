@@ -1,3 +1,19 @@
+GET http://localhost:8888/getMoRenAddressByUserCode?userCode=123
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-05-21T054038.200.json
+
+###
+
+POST http://localhost:8888/alipay/payList?bookCode=161949492191162&userCode=123&number=4
+Accept: */*
+Cache-Control: no-cache
+
+<> 2021-05-20T075602.400.json
+
+###
+
 GET http://localhost:8888/getBookTopByShopCode?shopCode=13869168164163516
 Accept: */*
 Cache-Control: no-cache
@@ -379,22 +395,6 @@ Accept: */*
 Cache-Control: no-cache
 
 <> 2021-05-01T052252.404.json
-
-###
-
-POST http://localhost:8888/delCarByCarCode?carCode=4
-Accept: */*
-Cache-Control: no-cache
-
-<> 2021-05-01T035949.200.json
-
-###
-
-POST http://localhost:8888/delCarByCarCode?carCode=4
-Accept: */*
-Cache-Control: no-cache
-
-<> 2021-05-01T035724.500.json
 
 ###
 
