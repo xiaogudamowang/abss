@@ -59,6 +59,10 @@
         update user set userPicture = #{userPicture},updateAt = now() where userCode = #{userCode};
     </update>
 
+    <update id="updPasswordByCode" parameterType="User">
+        update user set password = #{password},phoneNumber = #{phoneNumber},updateAt = now() where userCode = #{userCode};
+    </update>
+
     <select id="getUserByUserCode" parameterType="String" resultType="User">
         select * from user where userCode = #{userCode};
     </select>

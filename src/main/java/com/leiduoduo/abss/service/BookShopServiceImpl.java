@@ -39,6 +39,11 @@ public class BookShopServiceImpl implements BookShopService {
     }
 
     @Override
+    public List<BookShop> getShopListShenHe() {
+        return bookShopDao.getShopListShenHe();
+    }
+
+    @Override
     public int delShopByShopCode(String shopCode) {
         return bookShopDao.delShopByShopCode(shopCode);
     }
@@ -69,5 +74,19 @@ public class BookShopServiceImpl implements BookShopService {
                 return result;
             }
         }
+    }
+
+    @Override
+    public int updShopExistByShopCode(String shopCode, int exist) {
+        BookShop bookShop = new BookShop();
+        bookShop.setShopCode(shopCode);
+        bookShop.setExist(exist);
+        return bookShopDao.updShopExistByShopCode(bookShop);
+    }
+
+
+    @Override
+    public int updMemberTimeByBookCode(String shopCode) {
+        return bookShopDao.updMemberTimeByBookCode(shopCode);
     }
 }

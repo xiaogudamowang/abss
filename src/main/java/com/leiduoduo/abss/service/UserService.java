@@ -23,4 +23,6 @@ public interface UserService {
     int register(User user);
 
     User getUserByCode(String userCode);
+
+    int updPasswordByCode(String password, String userCode, String phoneNumber);
 }

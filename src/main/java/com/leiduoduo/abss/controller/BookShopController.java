@@ -54,6 +54,15 @@ public class BookShopController {
         return result;
     }
     /**
+     * 获取所有待审核的书店
+     */
+    @GetMapping("/getShopListShenHe")
+    public Map<String,Object> getShopListShenHe(){
+        Map<String,Object> result = new HashMap<>();
+        result.put("data",bookShopService.getShopListShenHe());
+        return result;
+    }
+    /**
      * 根据shopCode 删除 店铺
      */
     @PostMapping("/delShopByShopCode")
@@ -88,6 +97,25 @@ public class BookShopController {
             result.put("message",rs.get("message"));
             return result;
         }
+    }
+
+    @PostMapping("/updShopExistByShopCode")
+    public Map<String,Object> updShopExistByShopCode(String shopCode,int exist){
+        Map<String,Object> result = new HashMap<>();
+        result.put("code",0);
+        result.put("data",bookShopService.updShopExistByShopCode(shopCode,exist));
+        result.put("message","操作成功");
+        return result;
+    }
+
+    @PostMapping("/updMemberTimeByBookCode")
+    public Map<String,Object> updMemberTimeByBookCode(String shopCode){
+        System.out.println(shopCode);
+        Map<String,Object> result = new HashMap<>();
+        result.put("code",0);
+        result.put("data",bookShopService.updMemberTimeByBookCode(shopCode));
+        result.put("message","充值成功");
+        return result;
     }
 
 }

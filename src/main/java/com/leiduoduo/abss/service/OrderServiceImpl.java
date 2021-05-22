@@ -58,6 +58,7 @@ public class OrderServiceImpl implements OrderServcice {
         bookOrder.setTotal(Arith.mul(book.getPrice(),number));
         bookOrder.setShopCode(book.getShopCode());
         bookOrder.setShopName(bookShop.getShopName());
+        bookDao.bookNumberSub1(bookCode);
         return orderDao.addOrder(bookOrder);
     }
 }

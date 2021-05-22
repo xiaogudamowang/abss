@@ -103,6 +103,16 @@ public class UserController {
     }
 
     /**
+     * 修改用户密码，联系方式
+     */
+    @PostMapping("/updPasswordByCode")
+    public Map<String,Object> updPasswordByCode(String password,String userCode,String phoneNumber){
+        Map<String,Object> result = new HashMap<>();
+        result.put("data",userService.updPasswordByCode(password,userCode,phoneNumber));
+        return result;
+    }
+
+    /**
      * 注册
      */
     @PostMapping("/register")

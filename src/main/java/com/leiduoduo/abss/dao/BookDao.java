@@ -45,4 +45,6 @@ public interface BookDao {
     List<Book> getBookTopByShopCode(String shopCode);
 
     List<Book> getSortTopByShopCode(String shopCode);
+
+    int bookNumberSub1(String bookCode);
 }

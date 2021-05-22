@@ -27,4 +27,10 @@ public interface BookShopDao {
     BookShop selectBookShopByBookShopName(String shopName);
 
     int addBookShop(BookShop bookShop);
+
+    List<BookShop> getShopListShenHe();
+
+    int updShopExistByShopCode(BookShop bookShop);
+
+    int updMemberTimeByBookCode(String shopCode);
 }

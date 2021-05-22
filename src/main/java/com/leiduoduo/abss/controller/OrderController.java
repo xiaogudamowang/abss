@@ -37,7 +37,10 @@ public class OrderController {
 
     /**
      * 添加订单
-     * @param request
+     * @param bookCode
+     * @param bookName
+     * @param userCode
+     * @param number
      * @return
      */
     @PostMapping("/insertOrder")

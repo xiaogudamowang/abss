@@ -35,4 +35,5 @@ public interface BookService {
     List<Book> getBookTopByShopCode(String shopCode);
 
     List<Book> getSortTopByShopCode(String shopCode);
+
 }

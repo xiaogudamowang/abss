@@ -67,10 +67,10 @@
         select * from book where shopCode = #{shopCode} and exist = 1;
     </select>
     <select id="getBookTopByShopCode" parameterType="String" resultType="Book">
-      select * from book where shopCode = #{shopCode} and exist = 1 order by shopNumber desc;
+      select * from book where shopCode = #{shopCode} and exist = 1 order by shopNumber desc limit 0,5;
     </select>
     <select id="getSortTopByShopCode" parameterType="String" resultType="Book">
-      SELECT count(id) as id,sortName from book where shopCode = #{shopCode} GROUP BY sortName order by id desc;
+      SELECT count(id) as id,sortName from book where shopCode = #{shopCode} GROUP BY sortName order by id desc limit 0,5;
     </select>
     <update id="updateBook" parameterType="Book">
         update book set
@@ -93,5 +93,8 @@
     </update>
     <update id="delBookByCode" parameterType="String">
         update book set exist = 0 where bookCode = #{bookCode};
+    </update>
+    <update id="bookNumberSub1" parameterType="String">
+        update book set number = number-1, shopNumber = shopNumber+1 where bookCode = #{bookCode};
     </update>
 </mapper>

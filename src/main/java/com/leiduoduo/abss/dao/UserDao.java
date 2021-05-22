@@ -24,4 +24,6 @@ public interface UserDao {
     User getUserByUserCode(String userCode);
 
     User getUserByCode(String userCode);
+
+    int updPasswordByCode(User user);
 }

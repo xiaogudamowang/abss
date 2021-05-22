@@ -119,4 +119,20 @@ public class UserServiceImpl implements UserService {
     public User getUserByCode(String userCode) {
         return userDao.getUserByCode(userCode);
     }
+
+    /**
+     * 修改用户密码，联系方式
+     * @param password
+     * @param userCode
+     * @param phoneNumber
+     * @return
+     */
+    @Override
+    public int updPasswordByCode(String password, String userCode, String phoneNumber) {
+        User user = new User();
+        user.setUserCode(userCode);
+        user.setPassword(password);
+        user.setPhoneNumber(phoneNumber);
+        return userDao.updPasswordByCode(user);
+    }
 }

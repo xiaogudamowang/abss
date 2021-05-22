@@ -20,4 +20,10 @@ public interface BookShopService {
     int updShopByShopCode(BookShop bookShop);
 
     Map<String,Object> shopRegister(BookShop bookShop);
+
+    List<BookShop> getShopListShenHe();
+
+    int updShopExistByShopCode(String shopCode, int exist);
+
+    int updMemberTimeByBookCode(String shopCode);
 }

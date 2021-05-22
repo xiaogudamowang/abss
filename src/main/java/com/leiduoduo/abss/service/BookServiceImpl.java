@@ -73,4 +73,5 @@ public class BookServiceImpl implements BookService {
     public List<Book> getSortTopByShopCode(String shopCode) {
         return bookDao.getSortTopByShopCode(shopCode);
     }
+
 }

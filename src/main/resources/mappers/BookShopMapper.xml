@@ -26,6 +26,10 @@
         select * from bookshop where exist = 1;
     </select>
 
+    <select id="getShopListShenHe" resultType="BookShop">
+        select * from bookshop where exist = 2;
+    </select>
+
     <update id="delShopByShopCode" parameterType="String">
         update bookshop set exist = 0,updateAt = now() where shopCode = #{shopCode};
     </update>
@@ -56,5 +60,13 @@
         insert into bookshop (shopCode,shopName,phoneNumber,password,e_mail,address,QQ,message,createAt,updateAt)
         values (#{shopCode},#{shopName},#{phoneNumber},#{password},#{e_mail},#{address},#{QQ},#{message},now(),now());
     </insert>
+    
+    <update id="updShopExistByShopCode" parameterType="BookShop">
+        update bookshop set exist = #{exist} where shopCode = #{shopCode};
+    </update>
+
+    <update id="updMemberTimeByBookCode" parameterType="String">
+        update bookshop set memberTime = memberTime + 30,updateAt = now() where (shopCode = #{shopCode} or shopName = #{shopCode}) and exist = 1;
+    </update>
 
 </mapper>
