@@ -1,13 +1,12 @@
 package com.leiduoduo.abss.service;
 
 import com.leiduoduo.abss.pojo.Book;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 
 public interface BookService {
-    List<Book> getBookList();
+    List<Book> getBookList(int current);
     int addBook(Book book);
     List<Book> selectBookList(String condition);
     List<Book> getBookRankList(String sortName);
@@ -22,7 +21,7 @@ public interface BookService {
     /*
     通过商店编号查找书籍列表
      */
-    List<Book> getBookListByShopCode(String shopCode);
+    List<Book> getBookListByShopCode(String shopCode,int current);
     /*
     通过商店编号与书籍编号 修改 书籍信息
      */
@@ -36,4 +35,7 @@ public interface BookService {
 
     List<Book> getSortTopByShopCode(String shopCode);
 
+    int getBookTotal();
+
+    int getBookListTotalByShopCode(String shopCode);
 }

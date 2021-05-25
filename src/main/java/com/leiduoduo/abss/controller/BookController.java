@@ -29,9 +29,10 @@ public class BookController {
      * @return
      */
     @GetMapping("/getBookList")
-    public Map<String,Object> getBookList(){
+    public Map<String,Object> getBookList(int current){
         Map<String,Object> result = new HashMap<>();
-        result.put("data",bookService.getBookList());
+        result.put("data",bookService.getBookList(current));
+        result.put("total",bookService.getBookTotal());
         return result;
     }
 
@@ -97,9 +98,10 @@ public class BookController {
      * 通过商店编号查找书籍列表
      */
     @GetMapping("/getBookListByShopCode")
-    public Map<String,Object> getBookListByShopCode(String shopCode){
+    public Map<String,Object> getBookListByShopCode(String shopCode,int current){
         Map<String,Object> result = new HashMap<>();
-        result.put("data",bookService.getBookListByShopCode(shopCode));
+        result.put("data",bookService.getBookListByShopCode(shopCode,current));
+        result.put("total",bookService.getBookListTotalByShopCode(shopCode));
         return result;
     }
     /**

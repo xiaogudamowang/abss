@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.leiduoduo.abss.dao.UserDao">
-    <select id="getUserList" resultType="User">
-        select * from user where exist = 1;
+    <select id="getUserList" resultType="User" parameterType="int">
+        select * from user where exist = 1 limit #{current},20;
+    </select>
+    <select id="getUserListTotal" resultType="int">
+        select count(*) from user where exist = 1;
     </select>
     <select id="getUserByCode" resultType="User" parameterType="String">
         select * from user where exist = 1 and userCode = #{userCode};

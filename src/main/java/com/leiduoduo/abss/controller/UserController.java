@@ -24,9 +24,10 @@ public class UserController {
     Token token;
 
     @GetMapping("/getUserList")
-    public Map<String,Object> getUserList(){
+    public Map<String,Object> getUserList(int current){
         Map<String,Object> result = new HashMap<>();
-        result.put("data",userService.getUserList());
+        result.put("data",userService.getUserList(current));
+        result.put("total",userService.getUserListTotal());
         return result;
     }
     @PostMapping("/addUser")

@@ -16,7 +16,9 @@ public interface BookShopDao {
 
     int changeShopPassword(BookShop bookShop);
 
-    List<BookShop> getShopList();
+    List<BookShop> getShopList(int current);
+
+    int getShopListTotal();
 
     int delShopByShopCode(String shopCode);
 
@@ -33,4 +35,6 @@ public interface BookShopDao {
     int updShopExistByShopCode(BookShop bookShop);
 
     int updMemberTimeByBookCode(String shopCode);
+
+    int updMemberTiemSchedul();
 }

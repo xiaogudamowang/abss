@@ -6,7 +6,9 @@ import com.leiduoduo.abss.pojo.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 @Service
 public class BookServiceImpl implements BookService {
@@ -16,8 +18,9 @@ public class BookServiceImpl implements BookService {
     SortDao sortDao;
 
     @Override
-    public List<Book> getBookList() {
-        return bookDao.getBookList();
+    public List<Book> getBookList(int current) {
+        current = 20 * (current -1);
+        return bookDao.getBookList(current);
     }
 
     @Override
@@ -49,8 +52,11 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public List<Book> getBookListByShopCode(String shopCode) {
-        return bookDao.getBookListByShopCode(shopCode);
+    public List<Book> getBookListByShopCode(String shopCode,int current) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("shopCode",shopCode);
+        map.put("current",20 * (current - 1));
+        return bookDao.getBookListByShopCode(map);
     }
 
     @Override
@@ -74,4 +80,13 @@ public class BookServiceImpl implements BookService {
         return bookDao.getSortTopByShopCode(shopCode);
     }
 
+    @Override
+    public int getBookTotal() {
+        return bookDao.getBookTotal();
+    }
+
+    @Override
+    public int getBookListTotalByShopCode(String shopCode) {
+        return bookDao.getBookListTotalByShopCode(shopCode);
+    }
 }

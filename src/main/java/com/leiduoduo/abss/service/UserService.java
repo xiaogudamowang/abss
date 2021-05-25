@@ -8,7 +8,7 @@ import java.util.List;
 
 
 public interface UserService {
-    List<User> getUserList();
+    List<User> getUserList(int current);
     int addUser(User user);
     int updateUser(User user);
     int updateUser1(User user);
@@ -25,4 +25,6 @@ public interface UserService {
     User getUserByCode(String userCode);
 
     int updPasswordByCode(String password, String userCode, String phoneNumber);
+
+    int getUserListTotal();
 }

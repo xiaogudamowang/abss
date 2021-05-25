@@ -16,6 +16,12 @@
     </properties>
 
     <dependencies>
+        <!--短信验证sdk-->
+        <dependency>
+            <groupId>com.aliyun</groupId>
+            <artifactId>aliyun-java-sdk-core</artifactId>
+            <version>4.5.16</version>
+        </dependency>
         <!--token-->
         <dependency>
             <groupId>com.auth0</groupId>

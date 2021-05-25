@@ -13,7 +13,9 @@ public interface BookShopService {
 
     int changeShopPassword(String password,String shopCode);
 
-    List<BookShop> getShopList();
+    List<BookShop> getShopList(int current);
+
+    int getShopListTotal();
 
     int delShopByShopCode(String shopCode);
 

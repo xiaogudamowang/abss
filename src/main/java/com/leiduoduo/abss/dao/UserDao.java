@@ -9,7 +9,7 @@ import java.util.List;
 @Mapper
 @Repository
 public interface UserDao {
-    List<User> getUserList();
+    List<User> getUserList(int current);
     int addUser(User user);
     int updateUser(User user);
     int updateUser1(User user);
@@ -26,4 +26,6 @@ public interface UserDao {
     User getUserByCode(String userCode);
 
     int updPasswordByCode(User user);
+
+    int getUserListTotal();
 }

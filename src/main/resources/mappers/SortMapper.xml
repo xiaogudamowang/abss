@@ -3,10 +3,18 @@
 <mapper namespace="com.leiduoduo.abss.dao.SortDao">
 
     <select id="getSortList" resultType="Sort">
-        select * from sort;
+        select * from sort where exist = 1;
     </select>
     <select id="getNameByCode" parameterType="String" resultType="String">
         select sortName from sort where sortCode = #{sortCode};
     </select>
+    
+    <insert id="addSort" parameterType="Sort">
+        insert into sort (sortCode,sortName,createAt,updateAt) values (#{sortCode},#{sortName},now(),now());
+    </insert>
+
+    <update id="delSort" parameterType="String">
+        update sort set exist = 0 where sortCode = #{sortCode};
+    </update>
 
 </mapper>

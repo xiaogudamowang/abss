@@ -22,8 +22,12 @@
         update bookshop set password = #{password},updateAt = now() where shopCode = #{shopCode};
     </update>
     
-    <select id="getShopList" resultType="BookShop">
-        select * from bookshop where exist = 1;
+    <select id="getShopList" resultType="BookShop" parameterType="int">
+        select * from bookshop where exist = 1 limit #{current},20;
+    </select>
+
+    <select id="getShopListTotal" resultType="int">
+        select count(*) from bookshop where exist = 1;
     </select>
 
     <select id="getShopListShenHe" resultType="BookShop">
@@ -67,6 +71,10 @@
 
     <update id="updMemberTimeByBookCode" parameterType="String">
         update bookshop set memberTime = memberTime + 30,updateAt = now() where (shopCode = #{shopCode} or shopName = #{shopCode}) and exist = 1;
+    </update>
+
+    <update id="updMemberTiemSchedul">
+        update bookshop set memberTime = memberTime - 1 where memberTime > 0;
     </update>
 
 </mapper>

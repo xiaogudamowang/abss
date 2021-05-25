@@ -48,9 +48,10 @@ public class BookShopController {
      * 获取书店列表
      */
     @GetMapping("/getShopList")
-    public Map<String,Object> getShopList(){
+    public Map<String,Object> getShopList(int current){
         Map<String,Object> result = new HashMap<>();
-        result.put("data",bookShopService.getShopList());
+        result.put("data",bookShopService.getShopList(current));
+        result.put("total",bookShopService.getShopListTotal());
         return result;
     }
     /**

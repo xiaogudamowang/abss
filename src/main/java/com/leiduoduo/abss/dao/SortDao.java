@@ -14,4 +14,8 @@ public interface SortDao {
     通过类别编号获取类别名称
      */
     String getNameByCode(String Code);
+
+    int addSort(Sort sort);
+
+    int delSort(String sortCode);
 }

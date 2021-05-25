@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 @Repository
@@ -12,7 +13,7 @@ public interface BookDao {
     /*
     查询所有书籍
      */
-    List<Book> getBookList();
+    List<Book> getBookList(int current);
     /*
     添加书籍
      */
@@ -34,7 +35,7 @@ public interface BookDao {
      */
     Book getBookListByCode(String bookCode);
 
-    List<Book> getBookListByShopCode(String shopCode);
+    List<Book> getBookListByShopCode(Map<String, Object> map);
 
     int updateBook(Book book);
     /*
@@ -47,4 +48,8 @@ public interface BookDao {
     List<Book> getSortTopByShopCode(String shopCode);
 
     int bookNumberSub1(String bookCode);
+
+    int getBookTotal();
+
+    int getBookListTotalByShopCode(String shopCode);
 }

@@ -34,8 +34,13 @@ public class BookShopServiceImpl implements BookShopService {
     }
 
     @Override
-    public List<BookShop> getShopList() {
-        return bookShopDao.getShopList();
+    public List<BookShop> getShopList(int current) {
+        return bookShopDao.getShopList(current);
+    }
+
+    @Override
+    public int getShopListTotal() {
+        return bookShopDao.getShopListTotal();
     }
 
     @Override

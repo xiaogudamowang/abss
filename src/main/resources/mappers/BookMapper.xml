@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.leiduoduo.abss.dao.BookDao">
-    <select id="getBookList" resultType="Book">
-        select * from book where exist = 1;
+    <select id="getBookList" resultType="Book" parameterType="int">
+        select * from book where exist = 1 limit #{current},20;
+    </select>
+    <select id="getBookTotal" resultType="int">
+        select count(*) from book where exist = 1;
     </select>
     <insert id="addBook" parameterType="Book">
         insert into
@@ -63,8 +66,11 @@
     <select id="getBookListByCode" parameterType="String" resultType="Book">
         select * from book where bookCode = #{bookCode}
     </select>
-    <select id="getBookListByShopCode" parameterType="String" resultType="Book">
-        select * from book where shopCode = #{shopCode} and exist = 1;
+    <select id="getBookListByShopCode" parameterType="map" resultType="Book">
+        select * from book where shopCode = #{shopCode} and exist = 1 limit #{current},20;
+    </select>
+    <select id="getBookListTotalByShopCode" parameterType="String" resultType="int">
+        select count(*) from book where shopCode = #{shopCode} and exist = 1;
     </select>
     <select id="getBookTopByShopCode" parameterType="String" resultType="Book">
       select * from book where shopCode = #{shopCode} and exist = 1 order by shopNumber desc limit 0,5;

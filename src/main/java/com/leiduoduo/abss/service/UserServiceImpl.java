@@ -19,8 +19,8 @@ public class UserServiceImpl implements UserService {
     @Autowired
     AddressDao addressDao;
 
-    public List<User> getUserList(){
-        return userDao.getUserList();
+    public List<User> getUserList(int current){
+        return userDao.getUserList(current);
     }
     public int addUser(User user){
         String random = new Random().nextInt(100)+"";
@@ -134,5 +134,14 @@ public class UserServiceImpl implements UserService {
         user.setPassword(password);
         user.setPhoneNumber(phoneNumber);
         return userDao.updPasswordByCode(user);
+    }
+
+    /**
+     * 得到用户的数量
+     * @return
+     */
+    @Override
+    public int getUserListTotal() {
+        return userDao.getUserListTotal();
     }
 }
