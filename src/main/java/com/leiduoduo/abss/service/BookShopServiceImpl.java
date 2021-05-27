@@ -94,4 +94,9 @@ public class BookShopServiceImpl implements BookShopService {
     public int updMemberTimeByBookCode(String shopCode) {
         return bookShopDao.updMemberTimeByBookCode(shopCode);
     }
+
+    @Override
+    public BookShop getBookShopByCode(String shopCode) {
+        return bookShopDao.getShopByShopCode(shopCode);
+    }
 }

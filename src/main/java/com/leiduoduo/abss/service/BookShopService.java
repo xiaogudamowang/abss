@@ -28,4 +28,6 @@ public interface BookShopService {
     int updShopExistByShopCode(String shopCode, int exist);
 
     int updMemberTimeByBookCode(String shopCode);
+
+    BookShop getBookShopByCode(String shopCode);
 }

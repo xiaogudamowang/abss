@@ -54,6 +54,16 @@ public class BookShopController {
         result.put("total",bookShopService.getShopListTotal());
         return result;
     }
+
+    /**
+     * 获取书店列表
+     */
+    @GetMapping("/getBookShopByCode")
+    public Map<String,Object> getBookShopByCode(String shopCode){
+        Map<String,Object> result = new HashMap<>();
+        result.put("data",bookShopService.getBookShopByCode(shopCode));
+        return result;
+    }
     /**
      * 获取所有待审核的书店
      */

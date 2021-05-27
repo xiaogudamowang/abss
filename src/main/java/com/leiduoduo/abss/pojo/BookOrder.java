@@ -20,6 +20,7 @@ public class BookOrder {
     private double price;
     private String userCode;
     private String state;
+    private String src;
     private double total;
     private String shopCode;
     private String shopName;

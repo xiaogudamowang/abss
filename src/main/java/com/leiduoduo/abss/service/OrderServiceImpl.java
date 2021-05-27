@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class OrderServiceImpl implements OrderServcice {
@@ -24,7 +25,7 @@ public class OrderServiceImpl implements OrderServcice {
      * 得到全部订单信息
      */
     @Override
-    public List<BookOrder> getOrderList(String userCode) {
+    public List<Map<String,Object>> getOrderList(String userCode) {
         return orderDao.getOrderList(userCode);
     }
     /**
@@ -60,5 +61,21 @@ public class OrderServiceImpl implements OrderServcice {
         bookOrder.setShopName(bookShop.getShopName());
         bookDao.bookNumberSub1(bookCode);
         return orderDao.addOrder(bookOrder);
+    }
+
+    @Override
+    public int updsrcByOrderCode(String orderCode,String src) {
+        BookOrder bookOrder = new BookOrder();
+        bookOrder.setOrderCode(orderCode);
+        bookOrder.setSrc(src);
+        return orderDao.updsrcByOrderCode(bookOrder);
+    }
+
+    @Override
+    public int updStateByOrderCode(String orderCode, String state) {
+        BookOrder bookOrder = new BookOrder();
+        bookOrder.setOrderCode(orderCode);
+        bookOrder.setState(state);
+        return orderDao.updStateByOrderCode(bookOrder);
     }
 }

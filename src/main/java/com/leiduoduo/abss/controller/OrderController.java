@@ -28,6 +28,18 @@ public class OrderController {
         result.put("data",orderServcice.getOrderList(userCode));
         return result;
     }
+
+    /**
+     * 根据订单Code改变订单的状态与收款码
+     * @param orderCode
+     * @return
+     */
+    @PostMapping("/updsrcByOrderCode")
+    public Map<String,Object> updsrcByOrderCode(String orderCode,String src){
+        Map<String,Object> result = new HashMap<>();
+        result.put("data",orderServcice.updsrcByOrderCode(orderCode,src));
+        return result;
+    }
     @GetMapping("/getOrderListByShopCode")
     public Map<String,Object> getOrderListByShopCode(String shopCode){
         Map<String,Object> result = new HashMap<>();
@@ -64,6 +76,13 @@ public class OrderController {
             // 验证失败
             return "fail";
         }
+    }
+
+    @RequestMapping("/updStateByOrderCode")
+    public Map<String,Object> updStateByOrderCode(String orderCode,String state){
+        Map<String,Object> result = new HashMap<>();
+        result.put("data",orderServcice.updStateByOrderCode(orderCode,state));
+        return result;
     }
 
     /**
