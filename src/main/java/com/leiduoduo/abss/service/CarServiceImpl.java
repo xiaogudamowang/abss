@@ -70,4 +70,9 @@ public class CarServiceImpl implements CarService{
         }
 
     }
+
+    @Override
+    public int delCar(String carCode) {
+        return carDao.delCar(carCode);
+    }
 }

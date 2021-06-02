@@ -3,6 +3,7 @@ package com.leiduoduo.abss.service;
 import com.leiduoduo.abss.dao.BookDao;
 import com.leiduoduo.abss.dao.BookShopDao;
 import com.leiduoduo.abss.dao.OrderDao;
+import com.leiduoduo.abss.pojo.Address;
 import com.leiduoduo.abss.pojo.Book;
 import com.leiduoduo.abss.pojo.BookOrder;
 import com.leiduoduo.abss.pojo.BookShop;
@@ -21,6 +22,8 @@ public class OrderServiceImpl implements OrderServcice {
     BookDao bookDao;
     @Autowired
     BookShopDao bookShopDao;
+    @Autowired
+    AddressService addressService;
     /**
      * 得到全部订单信息
      */
@@ -45,21 +48,29 @@ public class OrderServiceImpl implements OrderServcice {
      * 添加订单
      */
     @Override
-    public int insertOrder(String bookCode, String bookName, String userCode, int number) {
+    public int insertOrder(String bookCode, String bookName, String userCode, int number,Address address) {
         BookOrder bookOrder = new BookOrder();
         Book book = bookDao.getBookListByCode(bookCode);
         BookShop bookShop = bookShopDao.getShopByShopCode(book.getShopCode());
+
         String orderCode = System.currentTimeMillis()+"";
+        // 创建订单
         bookOrder.setOrderCode(orderCode);
         bookOrder.setBookCode(bookCode);
         bookOrder.setBookName(book.getBookName());
         bookOrder.setNumber(number);
         bookOrder.setPrice(book.getPrice());
         bookOrder.setUserCode(userCode);
+        bookOrder.setName(address.getName());
+        bookOrder.setAddress(address.getMessage());
+        bookOrder.setTel(address.getTel());
         bookOrder.setTotal(Arith.mul(book.getPrice(),number));
         bookOrder.setShopCode(book.getShopCode());
         bookOrder.setShopName(bookShop.getShopName());
+        // 数量减1
+        // 购买数加1
         bookDao.bookNumberSub1(bookCode);
+
         return orderDao.addOrder(bookOrder);
     }
 

@@ -2,10 +2,13 @@ package com.leiduoduo.abss.controller;
 
 import com.alibaba.druid.util.StringUtils;
 import com.alibaba.fastjson.JSONObject;
+import com.leiduoduo.abss.pojo.Address;
 import com.leiduoduo.abss.pojo.BookOrder;
+import com.leiduoduo.abss.service.CarService;
 import com.leiduoduo.abss.service.OrderServcice;
 import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +24,8 @@ import java.util.logging.Logger;
 public class OrderController {
     @Autowired
     OrderServcice orderServcice;
+    @Autowired
+    CarService carService;
 
     @GetMapping("/getOrderList")
     public Map<String,Object> getOrderList(String userCode){
@@ -56,9 +61,15 @@ public class OrderController {
      * @return
      */
     @PostMapping("/insertOrder")
-    public Map<String,Object> insertOrder(String bookCode,String bookName,String userCode,int number){
+    @Transactional
+    public Map<String,Object> insertOrder(String carCode,String bookCode, String bookName, String userCode, int number, String name,String message,String tel){
         Map<String,Object> result = new HashMap<>();
-        result.put("data",orderServcice.insertOrder(bookCode,bookName,userCode,number));
+        Address address = new Address();
+        address.setName(name);
+        address.setTel(tel);
+        address.setMessage(message);
+        carService.delCar(carCode);
+        result.put("data",orderServcice.insertOrder(bookCode,bookName,userCode,number,address));
         return result;
     }
 

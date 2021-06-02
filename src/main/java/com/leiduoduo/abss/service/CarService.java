@@ -9,4 +9,6 @@ public interface CarService {
     int delCarByCarCode(String carCode);
 
     int addBookToCar(String userCode, String bookCode, int number);
+
+    int delCar(String carCode);
 }

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.leiduoduo.abss.dao.BookDao">
     <select id="getBookList" resultType="Book" parameterType="int">
-        select * from book where exist = 1 limit #{current},20;
+        select * from book where exist = 1 order by updateAt desc limit #{current},20;
     </select>
     <select id="getBookTotal" resultType="int">
         select count(*) from book where exist = 1;
@@ -61,7 +61,7 @@
         <if test="sortName != null and sortName != ''">
             where sortCode in (SELECT sortCode FROM sort where sortName = #{sortName})
         </if>
-        order by createAt DESC;
+        order by updateAt DESC;
     </select>
     <select id="getBookListByCode" parameterType="String" resultType="Book">
         select * from book where bookCode = #{bookCode}
@@ -93,14 +93,13 @@
         message = #{message},
         price = #{price},
         number = #{number},
-        createAt = now(),
         updateAt = now()
         where shopCode = #{shopCode} and bookCode = #{bookCode};
     </update>
     <update id="delBookByCode" parameterType="String">
-        update book set exist = 0 where bookCode = #{bookCode};
+        update book set exist = 0,updateAt=now() where bookCode = #{bookCode};
     </update>
     <update id="bookNumberSub1" parameterType="String">
-        update book set number = number-1, shopNumber = shopNumber+1 where bookCode = #{bookCode};
+        update book set number = number-1, shopNumber = shopNumber+1,updateAt=now() where bookCode = #{bookCode};
     </update>
 </mapper>

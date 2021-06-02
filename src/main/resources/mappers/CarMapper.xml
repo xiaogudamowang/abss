@@ -33,6 +33,9 @@
     <update id="upCode" parameterType="Map">
         update car set bigOrderCode = #{bigOrderCode} where bookCode=#{bookCode} and userCode=#{userCode};
     </update>
+    <update id="delCar" parameterType="String">
+        update car set exist = 0,updateAt = now() where carCode=#{carCode};
+    </update>
     <select id="selectCarListByBigOrderCode" parameterType="String" resultType="Car">
         select * from car where bigOrderCode=#{bigOrderCode};
     </select>

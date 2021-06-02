@@ -1,5 +1,6 @@
 package com.leiduoduo.abss.service;
 
+import com.leiduoduo.abss.pojo.Address;
 import com.leiduoduo.abss.pojo.BookOrder;
 
 import java.util.List;
@@ -13,7 +14,7 @@ public interface OrderServcice {
 
     void addOrder(BookOrder bookOrder);
 
-    int insertOrder(String bookCode, String bookName, String userCode, int number);
+    int insertOrder(String bookCode, String bookName, String userCode, int number, Address address);
 
     int updsrcByOrderCode(String orderCode,String src);
 

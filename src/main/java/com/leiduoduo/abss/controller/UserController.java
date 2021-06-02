@@ -95,7 +95,6 @@ public class UserController {
     /**
      * 修改用户头像
      */
-    @UserLoginToken
     @PostMapping("/updPicByUserCode")
     public Map<String,Object> updPicByUserCode(String userPicture,String userCode){
         Map<String,Object> result = new HashMap<>();

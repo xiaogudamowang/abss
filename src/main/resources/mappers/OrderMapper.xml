@@ -2,24 +2,24 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.leiduoduo.abss.dao.OrderDao">
     <select id="getOrderList" parameterType="String" resultType="Map">
-        select book_order.*,book.src as pictrue from book_order left join book on book_order.bookCode = book.bookCode where book_order.userCode = #{userCode};
+        select book_order.*,book.src as pictrue from book_order left join book on book_order.bookCode = book.bookCode where book_order.userCode = #{userCode} and book_order.exist = 1 order by updateAt DESC;
     </select>
     
     <select id="getOrderListByShopCode" parameterType="String" resultType="BookOrder">
-        select * from book_order where shopCode = #{shopCode} and exist = 1;
+        select * from book_order where shopCode = #{shopCode} and exist = 1 order by updateAt DESC;
     </select>
     
     <insert id="addOrder" parameterType="BookOrder">
-        insert into book_order (orderCode,bookCode,bookName,number,price,userCode,total,shopCode,shopName,createAt,updateAt)
-        values (#{orderCode},#{bookCode},#{bookName},#{number},#{price},#{userCode},#{total},#{shopCode},#{shopName},now(),now());
+        insert into book_order (orderCode,bookCode,bookName,number,price,userCode,name,address,tel,total,shopCode,shopName,createAt,updateAt)
+        values (#{orderCode},#{bookCode},#{bookName},#{number},#{price},#{userCode},#{name},#{address},#{tel},#{total},#{shopCode},#{shopName},now(),now());
     </insert>
     
     <update id="updsrcByOrderCode" parameterType="BookOrder">
-        update book_order set src = #{src},state = '申请退货' where orderCode = #{orderCode};
+        update book_order set src = #{src},state = '申请退货',updateAt=now() where orderCode = #{orderCode};
     </update>
 
     <update id="updStateByOrderCode" parameterType="BookOrder">
-        update book_order set state = #{state} where orderCode = #{orderCode};
+        update book_order set state = #{state},updateAt=now() where orderCode = #{orderCode};
     </update>
 
 </mapper>

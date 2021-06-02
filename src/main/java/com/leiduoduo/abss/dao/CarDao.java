@@ -20,4 +20,5 @@ public interface CarDao {
     int addCarNumber(Car car);
     void upCode(Map<String,Object> map);
     List<Car> selectCarListByBigOrderCode(String bigOrderCode);
+    int delCar(String carCode);
 }

@@ -19,6 +19,9 @@ public class BookOrder {
     private int number;
     private double price;
     private String userCode;
+    private String address;
+    private String name;
+    private String tel;
     private String state;
     private String src;
     private double total;
